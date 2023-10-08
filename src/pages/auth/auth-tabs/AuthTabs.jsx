@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 import './AuthTabs.scss';
-import backgroundImage from '../../../assets/images/background.jpg'
-import Login from '../login/Login';
+import backgroundImage from '../../../assets/images/background.jpg';
+import { Login, Register } from '../index';
 
 const AuthTabs = () => {
   const [type, setType] = useState('Sign In');
@@ -22,10 +22,10 @@ const AuthTabs = () => {
                       </li>
                   </ul>
                   {
-                    type === 'Sign In' && <div className="tab-item"><Login/ ></div>
+                    type === 'Sign In' && <div className="tab-item"><Login /></div>
                   }
                   {
-                    type === 'Sign Up' && <div className="tab-item">Register Component</div>
+                    type === 'Sign Up' && <div className="tab-item"><Register /></div>
                   }
               </div>
           </div>

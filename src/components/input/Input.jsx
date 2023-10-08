@@ -1,4 +1,6 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+
+import './Input.scss';
 
 const Input = ({ id, name, type, value, className, lableText, placeHolder, handleChange }) => {
   return (

@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Input from '../../../components/input/Input';
 import './Register.scss';
 import Button from '../../../components/button/Button';
+import { Utils } from '../../../services/utils/utils.service';
+import { authService } from '../../../services/api/auth/auth.service';
 
 const Register = () => {
 
@@ -18,6 +20,16 @@ const Register = () => {
     setLoading(true);
     event.preventDefault();
     try {
+      const avatarColor = Utils.avatarColor();
+      const avatarImage = '';
+      const result = await authService.signUp({
+        username,
+        email,
+        password,
+        avatarColor,
+        avatarImage
+      });
+      console.log(result);
       setHasError(false);
       setAlertType('alert-success');
     } catch (error) {
@@ -44,6 +56,7 @@ const Register = () => {
               value={username}
               lableText='Username'
               placeHolder='Enter Username'
+              style={{ border: `${hasError ? '1px solid #fa9b8a' : ''}` }}
               handleChange={ (event) => setUsername(event.target.value) }
             />
 
@@ -54,6 +67,7 @@ const Register = () => {
               value={email}
               lableText='Email'
               placeHolder='Enter Email'
+              style={{ border: `${hasError ? '1px solid #fa9b8a' : ''}` }}
               handleChange={ (event) => setEmail(event.target.value) }
             />
             <Input
@@ -63,6 +77,7 @@ const Register = () => {
               value={password}
               lableText='Password'
               placeHolder='Enter Password'
+              style={{ border: `${hasError ? '1px solid #fa9b8a' : ''}` }}
               handleChange={ (event) => setPassword(event.target.value) }
             />
         </div>
